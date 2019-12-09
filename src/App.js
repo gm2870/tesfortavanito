@@ -1,12 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Route, Switch, withRouter } from "react-router-dom";
+import Phone from "./components/phone";
+// import Code from "./components/code";
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+class App extends React.Component {
+    render() {
+        let routes = (
+            <Switch>
+                <Route path="login/phone" component={Phone} />;
+                {/* <Route path="login/code" component={Code} />; */}
+                <Route path="/" exact component={Phone} />;
+            </Switch>
+        );
+        return <div>{routes}</div>;
+    }
 }
-
 export default App;
