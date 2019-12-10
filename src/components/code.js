@@ -8,21 +8,21 @@ import { connect } from "react-redux";
 import * as actions from "../store/actions/index";
 import { Redirect } from "react-router-dom";
 
-class SignIn extends React.Component {
+class Code extends React.Component {
     state = {
-        phone: null
+        code: null
     };
-    phoneInputHandler = event => {
-        this.setState({ phone: event.target.value });
+    codeInputHandler = event => {
+        this.setState({ code: event.target.value });
     };
-    sendSMSHandler = event => {
+    submitHandler = event => {
         event.preventDefault();
-        this.props.onSendSMS(this.state.phone);
+        this.props.onPostCode(this.state.code);
     };
     render() {
         let authRedirect = null;
-        if (this.props.smsStatus) {
-            authRedirect = <Redirect to="/login/code" />;
+        if (this.props.authenticated) {
+            authRedirect = <Redirect to="/userinfo" />;
         }
         return (
             <Container component="main" maxWidth="xs">
@@ -34,20 +34,20 @@ class SignIn extends React.Component {
                         component="h1"
                         variant="h5"
                     >
-                        عضویت و یا ورود به حساب
+                        لطفا کد ارسال شده به موبایل خود را وارد کنید
                     </Typography>
-                    <form onSubmit={this.sendSMSHandler} noValidate>
+                    <form onSubmit={this.submitHandler} noValidate>
                         <TextField
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
-                            id="phone"
+                            id="code"
                             label="شماره موبایل"
-                            name="phone"
-                            autoComplete="phone"
+                            name="code"
+                            autoComplete="code"
                             autoFocus
-                            onChange={this.phoneInputHandler}
+                            onChange={this.codeInputHandler}
                         />
                         <Button
                             type="submit"
@@ -55,7 +55,7 @@ class SignIn extends React.Component {
                             variant="contained"
                             color="primary"
                         >
-                            ادامه
+                            ورود
                         </Button>
                     </form>
                 </div>
@@ -65,12 +65,12 @@ class SignIn extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        smsStatus: state.auth.smsSent
+        authenticated: state.auth.authenticated
     };
 };
 const mapDispatchToProps = dispatch => {
     return {
-        onSendSMS: phone => dispatch(actions.sendSMS(phone))
+        onPostCode: code => dispatch(actions.postCode(code))
     };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(Code);
