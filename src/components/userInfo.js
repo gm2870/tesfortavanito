@@ -42,8 +42,9 @@ class UserInfo extends React.Component {
     };
 
     render() {
-        const formElements = this.state.formElements.map(el => (
+        const formElements = this.state.formElements.map((el, index) => (
             <TextField
+                key={index}
                 variant="outlined"
                 margin="normal"
                 required

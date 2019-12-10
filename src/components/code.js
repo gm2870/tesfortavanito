@@ -43,7 +43,7 @@ class Code extends React.Component {
                             required
                             fullWidth
                             id="code"
-                            label="شماره موبایل"
+                            label="کد شش رقمی"
                             name="code"
                             autoComplete="code"
                             autoFocus
