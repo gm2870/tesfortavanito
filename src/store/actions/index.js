@@ -1,1 +1,2 @@
-export { sendSMS, postCode } from "./sendCode";
+export { sendSMS, postCode } from "./auth";
+export { saveData, getUser } from "./user";

@@ -4,8 +4,7 @@ const initialState = {
     message: null,
     mobile: null,
     smsSent: false,
-    authenticated: false,
-    user: {}
+    authenticated: false
 };
 
 const handleSMS = (state, action) => {
@@ -32,13 +31,6 @@ const saveToken = (state, action) => {
     };
     return newState;
 };
-const saveUser = (state, action) => {
-    const newState = {
-        ...state,
-        user: action.user
-    };
-    return newState;
-};
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SEND_SMS:
@@ -47,8 +39,6 @@ const reducer = (state = initialState, action) => {
             return handleCode(state, action);
         case actionTypes.SEND_TOKEN:
             return saveToken(state, action);
-        case actionTypes.SAVE_USER:
-            return saveUser(state, action);
         default:
             return state;
     }

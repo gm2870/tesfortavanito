@@ -7,10 +7,13 @@ import { BrowserRouter } from "react-router-dom";
 
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import authReducer from "./store/reducers/auth";
+import userReducer from "./store/reducers/user";
+
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 const rootReducer = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    user: userReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

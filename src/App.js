@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Phone from "./components/phone";
 import Code from "./components/code";
 import UserInfo from "./components/userInfo";
-
+import Dashboard from "./components/dashboard";
 class App extends React.Component {
     render() {
         let routes = (
@@ -12,6 +12,7 @@ class App extends React.Component {
                 <Route path="/login/phone" component={Phone} />;
                 <Route path="/login/code" component={Code} />;
                 <Route path="/userinfo" component={UserInfo} />;
+                <Route path="/dashboard" component={Dashboard} />;
                 <Route path="/" exact component={Phone} />;
             </Switch>
         );

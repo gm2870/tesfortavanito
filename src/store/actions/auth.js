@@ -27,7 +27,6 @@ export const sendSMS = mobile => {
                 }
             )
             .then(response => {
-                console.log(response);
                 dispatch(sendCode(mobile, response.data.message));
             });
     };
@@ -36,12 +35,6 @@ export const sendToken = token => {
     return {
         type: actionTypes.SEND_TOKEN,
         token: token
-    };
-};
-export const saveUser = user => {
-    return {
-        type: actionTypes.SAVE_USER,
-        user: user
     };
 };
 
@@ -60,32 +53,8 @@ export const postCode = code => {
                 }
             )
             .then(response => {
-                console.log(response);
                 localStorage.setItem("token", response.data.access_token);
-                const user = {};
-                user.name = response.data.data.first_name;
-                user.lastname = response.data.data.lastname;
-                user.email = response.data.data.email;
                 dispatch(sendToken(response.data.access_token));
             });
     };
 };
-// export const getUser = () => {
-//     return (dispatch, getState) => {
-//         const mobileNo = getState().auth.mobile;
-//         const header = {
-//             Accept: "aplication/json"
-//         };
-//         axios
-//             .get(
-//                 "https://api.tavanito.ir/v2/user",
-//                 { mobile: mobileNo },
-//                 {
-//                     headers: header
-//                 }
-//             )
-//             .then(response => {
-//                 console.log(response);
-//             });
-//     };
-// };

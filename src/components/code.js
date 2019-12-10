@@ -22,7 +22,7 @@ class Code extends React.Component {
     render() {
         let authRedirect = null;
         if (this.props.authenticated) {
-            authRedirect = <Redirect to="/userinfo" />;
+            authRedirect = <Redirect to="/dashboard" />;
         }
         return (
             <Container component="main" maxWidth="xs">
